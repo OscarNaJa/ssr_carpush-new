@@ -47,13 +47,13 @@ RegisterCommand('vehicle-push', function()
     if not IsEntityAttachedToEntity(ped, closestVehicle) then
         NetworkRequestControlOfEntity(closestVehicle)
 
-        local minDim, maxDim = GetModelDimensions(GetEntityModel(closestVehicle))
+        local minDim = GetModelDimensions(GetEntityModel(closestVehicle))
         if #(frontCoords - pedCoords) > #(rearCoords - pedCoords) then
             isInFront = false
-            AttachEntityToEntity(ped, closestVehicle, GetPedBoneIndex(ped, 6286), 0.0, minDim.y - 0.3, maxDim.z + 1.0, 0.0, 0.0, 0.0, 0.0, false, false, true, false, true)
+            AttachEntityToEntity(ped, closestVehicle, GetPedBoneIndex(ped, 6286), 0.0, minDim.y - 0.3, minDim.z + 1.0, 0.0, 0.0, 0.0, 0.0, false, false, true, false, true)
         else
             isInFront = true
-            AttachEntityToEntity(ped, closestVehicle, GetPedBoneIndex(ped, 6286), 0.0, minDim.y * -1 + 0.1, maxDim.z + 1.0, 0.0, 0.0, 180.0, 0.0, false, false, true, false, true)
+            AttachEntityToEntity(ped, closestVehicle, GetPedBoneIndex(ped, 6286), 0.0, minDim.y * -1 + 0.1, minDim.z + 1.0, 0.0, 0.0, 180.0, 0.0, false, false, true, false, true)
         end
     end
 
